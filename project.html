@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style type="text/css">
+    body{
+padding: 0px;
+margin: 0px;
+
+    }
+    #topbar{
+width: 100%;
+background-color: #EDEDED;
+padding: 4px;
+height: 40px;
+    }
+    #logo{
+        float: left;
+        font-weight: bolder;
+        font-size: 30px;
+    }
+ #buttons{
+width: 270px;
+margin: 0 auto;
+
+
+ } 
+.btn{
+    float: left;
+    border: 1px solid grey;
+    border-right: none;
+    padding: 5px;
+}
+#html{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius:4px;
+}
+#output{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-right: 1px solid gray;
+}
+.act{
+    background-color: #E8F2FF;
+}
+.heighlighted{
+    background-color: grey;
+}
+textarea{
+    width: 50%;
+    height: 585px;
+    resize: none;
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    border-color: grey;
+    
+}
+.place{
+   
+    float: left;
+
+}
+#outputplace{
+    width: 49%;
+    height: 585px;
+    border: none;
+}
+.hidden{
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <div id="topbar">
+<div id="logo">
+    CodePlayer
+</div>
+<div id="buttons">
+    <div id="html" class="btn act">HTML</div>
+    <div id="css" class="btn">CSS</div>
+    <div id="js" class="btn">JAVASCRIPT</div>
+    <div id="output" class="btn act">OUTPUT</div>
+</div>
+    </div>
+    <div id="bodyco">
+<textarea id="htmlplace" class="place">hellow</textarea>
+<textarea id="cssplace" class="place hidden">p {color:red;}</textarea>
+<textarea id="javascriptplace" class="place hidden">alert("hi")</textarea>
+<iframe id="outputplace" class="place"></iframe>
+    </div>
+    <script type="text/javascript">
+    $(".btn").hover(function(){
+
+$(this).addClass("heighlighted");
+
+    },function(){
+$(this).removeClass("heighlighted");
+    });
+    $(".btn").click(function(){
+        $(this).toggleClass("act");
+        $(this).removeClass("heighlighted");
+        var placeIs= $(this).attr("id") + "place";
+       $("#" + placeIS).toggle();
+    });
+    $("textarea").height($(window).height() - $("topbar").height() - 10);
+
+    $("textarea").on('change keyup paste', function() {
+        $("iframe").contents().find("html").html($("#htmlplace").val());
+});
+
+    
+    
+    </script>
+</body>
+</html>
